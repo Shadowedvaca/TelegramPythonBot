@@ -1,6 +1,7 @@
 import time
 import json 
 import requests
+import urllib
 
 TOKEN = "738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
@@ -35,6 +36,7 @@ def get_last_chat_id_and_text(updates):
 
 
 def send_message(text, chat_id):
+    text = urllib.parse.quote_plus(text)
     url = URL + "sendMessage?text={}&chat_id={}".format(text, chat_id)
     get_url(url)
     
