@@ -1,8 +1,8 @@
+from dbhelper import DBHelper
 import time
 import json 
 import requests
 import urllib
-from dbhelper import DBHelper
 
 db = DBHelper()
 TOKEN = "738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8"
@@ -52,31 +52,31 @@ def get_last_update_id(updates):
 	
 def handle_updates(updates):
     for update in updates["result"]:
-        try:
-            text = update["message"]["text"]
-        	chat = update["message"]["chat"]["id"]
-            items = db.get_items()
-            if text in items:
-                db.delete_item(text)
-                items = db.get_items()
-            else:
-                db.add_item(text)
-                items = db.get_items()
-            message = "\n".join(items)
-            send_message(message, chat)
-        except KeyError:
-            pass
+		try:
+			text = update["message"]["text"]
+			chat = update["message"]["chat"]["id"]
+			items = db.get_items()
+			if text in items:
+				db.delete_item(text)
+				items = db.get_items()
+			else:
+				db.add_item(text)
+				items = db.get_items()
+			message = "\n".join(items)
+			send_message(message, chat)
+		except KeyError:
+			pass
 
-			
+
 def main():
 	db.setup()
-    last_update_id = None
-    while True:
-        updates = get_updates(last_update_id)
-        if len(updates["result"]) > 0:
-            last_update_id = get_last_update_id(updates) + 1
-            handle_updates()
-        time.sleep(0.5)
+	last_update_id = None
+	while True:
+		updates = get_updates(last_update_id)
+		if len(updates["result"]) > 0:
+			last_update_id = get_last_update_id(updates) + 1
+			handle_updates(updates)
+		time.sleep(0.5)
 
 
 if __name__ == '__main__':
