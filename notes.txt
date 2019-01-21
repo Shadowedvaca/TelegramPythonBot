@@ -1,8 +1,0 @@
-tg://resolve?domain=shadowedvaca_exampletodo_bot
-738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8
-https://core.telegram.org/bots/api
-
-https://api.telegram.org/bot738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8/getme
-https://api.telegram.org/bot738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8/getupdates
-
-https://api.telegram.org/bot738251565:AAHs4UPjWHmJFjeLT7jm7MQEjOr7LiVLYb8/sendMessage?chat_id=708691539&text=TestReply
